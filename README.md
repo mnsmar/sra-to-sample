@@ -1,7 +1,13 @@
-`sra-to-sample` downloads SRA files and creates the corresponding sample
-directory structure. The input to the script is a JSON file.
+*sra-to-sample* downloads SRA files, extracts the reads, merges multiple runs
+and organizes them in a nice directory structure. The input to the script is a
+JSON file which can be created manually or extracted from the GEO SOFT files
+using `geo-soft-to-json.py`
 
-e.g. The following JSON file
+Note that when multiple SRA codes are associated with a sample, as in the
+first line of the example JSON, the files are concatenated in one fastq file.
+Files `reads.2.fastq.gz` are only created if paired-end sequencing was used.
+
+For example:
 
 ```json
 { "samples":[
@@ -23,5 +29,3 @@ sample_name_2
   README
 ```
 
-Note that when multiple SRA codes are associated with a sample, as in the
-first line of the example JSON, the files are concatenated in one fastq file.
